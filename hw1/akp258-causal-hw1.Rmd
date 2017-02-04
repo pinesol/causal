@@ -1,0 +1,42 @@
+---
+title: "Causal Inference Homework 1"
+author: "Alex Pine"
+date: "2/4/2017"
+output: pdf_document
+---
+## Problem 1
+I compared the utility-scale solar energy consumption in the US to the price of Google stock over the last few years. There is a correlation of 0.93 between the two variables, but I doubt that the increasing consumption of solar energy is causing Google's stock price to increase.
+
+```{r}
+solar = read.table("~/causal/hw1/solar.csv",header=TRUE, sep=',')
+goog = read.table("~/causal/hw1/goog.csv",header=TRUE, sep=',')
+goog_solar_model = lm(goog$price ~ solar$consumption)
+plot(solar$consumption, goog$price,
+     main='Solar Consumption vs. GOOG', 
+     xlab="US Solar Energy Consumption (Trillion Btu)", 
+     ylab="GOOG Stock Price")
+abline(goog_solar_model)
+```
+
+Next, I compared the stock price of Barnes and Noble (BKS) to that of Chipotle (CMG) over the past several years. The two have a correlation coffecient of 0.8. Perhaps the decline of bookstores is causing people to eat more burritos?
+
+```{r}
+barnes = read.table("~/causal/hw1/bks.csv",header=TRUE, sep=',')
+chipotle = read.table("~/causal/hw1/cmg.csv",header=TRUE, sep=',')
+chipotle_barnes_model = lm(chipotle$price ~ barnes$price)
+plot(barnes$price, chipotle$price,
+     main='BKS vs. CMG', 
+     xlab="BKS Stock Price", 
+     ylab="CMG Stock Price")
+abline(chipotle_barnes_model)
+```
+
+## Problem 2
+
+The paper mentions one possible confounder: ethnicity. Names common to a particular ethnicity more frequently share their first letter than those from different ethnicities (e.g. "Carlos" and "Carla"). Another confounder might be that alliterative names sound nicer when spoken in sequence, slightly encouraging a couple to stay together.
+
+
+All code and data can be found at http://github.com/pinesol/causal/hw1.
+
+
+
