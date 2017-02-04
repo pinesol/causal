@@ -36,7 +36,7 @@ abline(chipotle_barnes_model)
 The paper mentions one possible confounder: ethnicity. Names common to a particular ethnicity more frequently share their first letter than those from different ethnicities (e.g. "Carlos" and "Carla"). Another confounder might be that alliterative names sound nicer when spoken in sequence, slightly encouraging a couple to stay together.
 
 
-All code and data can be found at http://github.com/pinesol/causal/hw1.
+All code and data can be found at http://github.com/pinesol/causal/.
 
 
 
